@@ -1,0 +1,27 @@
+{
+  "entities": {
+    "Post": {
+      "title": "Daily Record",
+      "description": "A user's daily diary entry",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string", "description": "UID of the user who wrote the post" },
+        "date": { "type": "string", "description": "Date of the entry in YYYY.MM.DD format" },
+        "mood": { "type": "string", "description": "Emoji representing the mood" },
+        "content": { "type": "string", "description": "The text content of the record" },
+        "imageUrl": { "type": "string", "description": "Optional URL of an uploaded image" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "likes": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["authorId", "date", "mood", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "Collection of daily records"
+    }
+  }
+}
